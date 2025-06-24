@@ -1,0 +1,84 @@
+/*
+PART 1
+
+const express = require("express");
+
+const app = express();
+
+app.use((req,res,next) => {
+    console.log("The request reached the first middleware");
+    next();
+})
+
+app.use((req,res,next) => {
+    console.log("The request reached the second middleware");
+    res.send("<h1>Hello from Express JS !!!</h1>");
+})
+
+app.listen(3000,() => {
+    console.log("App is listening on the port 3000 !!!");
+})
+
+PART 2: Handling Routes
+
+const express = require("express");
+
+const app = express();
+
+//handling routes
+
+
+app.use("/next",(req,res,next) => {
+    res.send("<h1>This is the next page</h1>");
+})
+
+app.use("/", (req,res,next) => {
+    res.send("<h1>This is the main page !!!</h1>");
+    next();
+})
+
+app.listen(3000,() => {
+    console.log("App is listening on the port 3000 !!!");
+})
+
+PART 3: Handling Parsing of the request
+
+const express = require("express");
+
+const app = express();
+
+//middle that parses the incoming the request
+app.use(express.urlencoded({ extended: false })); //no need of separate body parser
+
+//Parsing the incoming request
+
+app.use("/add-product", (req, res, next) => {
+  res.send(
+    "<form action='/product' method='POST'><label htmlFor='title'>Title</label><input type='text' name='title'/><button type='submit'>Add Product</button></form>"
+  );
+});
+
+// app.use("/product", (req,res,next) => {
+//     console.log(req.body);
+//     res.redirect("/");
+// })
+
+//limiting /product to POST request
+
+app.post("/product", (req,res,next) => {
+    console.log(req.body);
+    res.redirect("/");
+})
+
+app.use("/", (req, res, next) => {
+  res.send(
+    "<h1>please add click to add the product <a href='/add-product'>here</a></h1>"
+  );
+});
+
+app.listen(3000, () => {
+  console.log("App is listening on the port 3000 !!!");
+});
+
+
+*/
